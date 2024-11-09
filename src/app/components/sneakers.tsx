@@ -1,5 +1,5 @@
 // components/ProductGrid.tsx
-import { height } from "@fortawesome/free-brands-svg-icons/fa42Group";
+
 import Image from "next/image"
 
 const products = [
