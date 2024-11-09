@@ -1,4 +1,4 @@
-import React from 'react';
+import Image from "next/image"
 
 const products = [
   { name: "Casual Wear ", price: "Rp. 2780", imgSrc: "/images/heels1.webp" },
@@ -23,7 +23,7 @@ const ProductGrid = () => {
     <div className="product-grid">
       {products.map((product, index) => (
         <div key={index} className="product-card">
-          <img src={product.imgSrc} alt={product.name} className="product-image" />
+          <Image src={product.imgSrc} alt={product.name} className="product-image" />
           <div className="product-details">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">{product.price}</p>

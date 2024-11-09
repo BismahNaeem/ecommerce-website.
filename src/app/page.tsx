@@ -1,4 +1,3 @@
-import DiscountBanner from "./components/discountbanner";
 import Herosection from "./components/herosection"
 import Sneakers from "./components/sneakers"
 import Heels from "./components/heels"
