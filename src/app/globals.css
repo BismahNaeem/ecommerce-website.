@@ -1,27 +1,597 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Header Styling */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Navigation styling */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  flex-grow: 1; /* Allow nav to take available space */
+  justify-content: center; /* Center nav links horizontally */
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: #0070f3; /* Customize hover color */
+}
+
+/* Icon links styling */
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icons a {
+  font-size: 1.1rem;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.icons a:hover {
+  color: #0070f3; /* Customize hover color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .nav {
+    text-align: center;
+    margin-top: 2px;
+  }
+  .logo{display: none;}
+  .icons {
+     
+      display: none;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 1024px) {
+  .header {
+      flex-direction: row;
+      padding: 1rem;
+      justify-content: center;
+      
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* herosection styling */
+.heroSection {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  height: 85vh;
+  box-sizing: border-box; 
+}
+
+.leftImage,
+.rightImages div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  height: 100%; 
+}
+
+/* Left big image */
+.leftImage {
+  flex: 1;
+  aspect-ratio: 6 / 10;
+}
+
+.leftImage h2,
+.leftImage p {
+  position: absolute;
+  left: 10%;
+  color: rgb(248, 242, 242);
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+}
+
+.leftImage h2 {
+  top: 70%;
+  font-size: 3rem;
+  font-weight: bold;
+  
+}
+
+.leftImage p {
+  top: 80%;
+  font-size: 1.2rem;
+}
+
+/* Right  image */
+.rightImages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+   gap: 1rem;  
+  height: 100%; 
+}
+
+.rightImages div {
+  aspect-ratio: 6 / 8;
+}
+
+.rightImages div h3, 
+.rightImages div p {
+  position: absolute;
+  left: 10%;
+  color: white;
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+}
+
+.rightImages div h3 {
+  top: 10%;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.rightImages div p {
+  top: 20%;
+  font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .heroSection {
+    flex-direction: column;
+    height: auto; 
+  }
+
+  .leftImage,
+  .rightImages div {
+    height: auto; 
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .leftImage h2 {
+    font-size: 1.5rem;
+  }
+
+  .leftImage p {
+    font-size: 1rem;
+  }
+
+  .rightImages div h3 {
+    font-size: 1.2rem;
+  }
+
+  .rightImages div p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Discount Banner Styles */
+.discount-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f2f2f2;
+  padding: 20px 70px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.discount-text h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.discount-text p {
+  font-size: 16px;
+  color: #666;
+  margin: 5px 0 0;
+}
+
+.discount-button {
+  padding: 10px 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.discount-button:hover {
+  background-color: #333;
+}
+
+/* Background text for 10% OFF */
+.discount-banner::before {
+  content: "10% OFF";
+  font-size: 120px;
+  font-weight: bold;
+  color: rgba(155, 42, 42, 0.05);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .discount-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .discount-button {
+    margin-top: 10px;
+    width: 50%;
+  }
+
+  .discount-text h2 {
+    font-size: 20px;
+  }
+
+  .discount-text p {
+    font-size: 14px;
+  }
+
+  .discount-banner::before {
+    font-size: 80px;
+  }
+}
+
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
+}
+
+/* Product Card */
+.product-card {
+  position: relative;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Product Image */
+.product-image {
+  width: 150%;
+  height: 60%;
+  max-width: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+  filter: brightness(1.1); /* Enhance image quality appearance */
+}
+
+/* High-Resolution Image */
+.product-image::after {
+  content: '';
+  display: block;
+  background-size: cover;
+}
+
+/* Ensure High-Quality Display on Retina Screens */
+@media (min-resolution: 192dpi), 
+       (min-resolution: 2dppx) {
+  .product-image {
+    image-rendering: -webkit-optimize-contrast; /* For Webkit browsers */
+    image-rendering: crisp-edges; /* Standard */
+  }
+}
+
+/* Product Details */
+.product-details {
+  margin-top: 12px;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.product-price {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ff5555;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  color: #ff0000;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 100px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .product-image {
+    max-width: 120px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+  }
+
+  .product-price {
+    font-size: 0.8rem;
+  }
+}
+
+/* New Arrivals Banner Styles */
+.banner {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.banner-content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #ccc;
+}
+
+.banner-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: orange;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.banner-button:hover {
+  background-color: #ddd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .banner-content h1 {
+    font-size: 2rem;
+  }
+  .banner-content p {
+    font-size: 1rem;
+  }
+  .banner-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+ /* snaeker sale bner css */
+
+.sneakers-banner {
+  background-color: #fff; /* Black background */
+  color: #000;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.sneakers-content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.sneakers-content p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #ccc;
+}
+
+.sneakers-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ffa500; /* Orange button */
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sneakers-button:hover {
+  background-color: #ff8c00; /* Darker orange on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sneakers-content h1 {
+    font-size: 2rem;
+  }
+  .sneakers-content p {
+    font-size: 1rem;
+  }
+  .sneakers-button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* footer css */
+
+
+.footer-container {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.newsletter {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.email-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.email-input input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #333;
+  border-right: none;
+}
+
+.email-input button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer-links div h3 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links div ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links div ul li {
+  margin: 0.3rem 0;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+@media (min-width: 768px) {
+  .footer-section {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .newsletter {
+    text-align: left;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+    gap: 4rem;
+    text-align: left;
   }
 }
